@@ -1,17 +1,21 @@
 <template>
   <div>
     <h2>List of Users: {{users.length}}</h2>
+    <div v-if="loadingUsers">Loading...</div>
     <User
       v-for="user in users"
       v-bind:user="user"
       v-bind:key="user.user_id"
-      v-on:clickUser="onClickUserInList"
+      v-on:selectedUser="onClickUserInList"
      />
+     <br />
+     <div v-if="selectedUser">
+       You selected: {{ selectedUser }}
+     </div>
   </div> 
 </template>
 
 <script>
-//import { } from 'vuex'
 import User from './User'
 
 export default {
@@ -24,28 +28,29 @@ export default {
       selectedUser: null
     }
   },
-computed: {
-  //...mapState(['users']),
-
-  //...mapGetters(['getterLoadingUsers', 'getterUsers'])
-  users() {
-    return this.$store.getters.getterUsers
-  }
-},
-created() {
-  this.callActionGetUsers()
-},
-methods: {
-   // ...mapActions(['getUsers']),
-   callActionGetUsers() {
-    return this.$store.dispatch('getUsers')
-   },
-    onClickUserInList(user) {
-      this.$emit('clickUserInList', user)
-      //const current = new Date()
-      //console.log('Emiting from UserList', current.toLocaleTimeString(), current.getMilliseconds())
+  computed: {
+    users() {
+      return this.$store.getters.getterUsers
+    },
+    loadingUsers() {
+      // eslint-disable-next-line no-console
+      console.log('Loading!')
+      return this.$store.getters.getterLoadingUsers
     }
-  }
+  },
+  created() {
+    this.callActionGetUsers()
+  },
+  methods: {
+    callActionGetUsers() {
+      return this.$store.dispatch('getUsers')
+    },
+    onClickUserInList(user) {
+      this.selectedUser = user
+      // eslint-disable-next-line no-console
+      console.log('List!')
+      }
+    }
 }
 </script>
 

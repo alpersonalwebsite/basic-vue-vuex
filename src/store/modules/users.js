@@ -11,7 +11,7 @@ const getters = {
 }
 
 const mutations = {
-  setLoadingUsers: (state, payload) => state.setLoadingUsers = payload,
+  setLoadingUsers: (state, payload) => state.loadingUsers = payload,
   setUsers: (state, payload) => state.users = payload
 }
 
