@@ -18,13 +18,18 @@ const mutations = {
 const actions = {
   getUsers: async ({ commit }) => {
     commit('setLoadingUsers', true)
-    const result = apolloClient.query({
-      query: getUsersQuery
-    })
-    if (result) {
-      commit('setUsers', data.data.getUsers)
+    const result = await getUsersQuery()
+    if (result && result.data) {
+      commit('setUsers', result.data)
     }
     commit('setLoadingUsers', false)
       
   }
+}
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations
 }

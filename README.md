@@ -1,5 +1,5 @@
 # basic-vue-vuex
-Using the server of `basic-apollo-graphql-mongo`
+
 
 ## Project setup
 ```
