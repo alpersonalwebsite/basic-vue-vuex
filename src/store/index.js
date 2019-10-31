@@ -1,8 +1,8 @@
-import Vuex from 'vuex'
-import Vue from 'vue'
-import users from './modules/users'
+import Vuex from "vuex";
+import Vue from "vue";
+import users from "./modules/users";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 //new store
 export default new Vuex.Store({
@@ -10,4 +10,4 @@ export default new Vuex.Store({
     users
     // more modules
   }
-})
+});
