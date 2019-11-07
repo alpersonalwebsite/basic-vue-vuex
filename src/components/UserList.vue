@@ -6,11 +6,12 @@
       v-for="user in users"
       v-bind:user="user"
       v-bind:key="user.user_id"
+      v-bind:selectedUserData="selectedUserData"
       v-on:selectedUser="onClickUserInList"
      />
      <br />
-     <div v-if="selectedUser">
-       You selected: {{ selectedUser }}
+     <div v-if="selectedUserData">
+       You selected: {{ selectedUserData }}
      </div>
   </div> 
 </template>
@@ -25,7 +26,7 @@ export default {
   },
   data() {
     return {
-      selectedUser: null
+      selectedUserData: null
     }
   },
   computed: {
@@ -46,7 +47,7 @@ export default {
       return this.$store.dispatch('getUsers')
     },
     onClickUserInList(user) {
-      this.selectedUser = user
+      this.selectedUserData = user
       // eslint-disable-next-line no-console
       console.log('List!')
       }
