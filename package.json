@@ -2,7 +2,16 @@
   "name": "basic-vue-vuex",
   "version": "0.1.0",
   "description": "Simple example of how to implement Vuex",
-  "keywords": ["vue state", "vuex store", "vuex", "vuex actions", "vuex mutations", "vuex getters", "vuex state", "centralized state vue"],
+  "keywords": [
+    "vue state",
+    "vuex store",
+    "vuex",
+    "vuex actions",
+    "vuex mutations",
+    "vuex getters",
+    "vuex state",
+    "centralized state vue"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
