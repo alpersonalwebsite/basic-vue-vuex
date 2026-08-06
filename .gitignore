@@ -3,6 +3,10 @@ node_modules
 /dist
 
 # local env files
+# .env itself was NOT ignored, only the .local variants. Vue CLI's scaffold does that
+# on purpose (a committed .env is meant to hold non-secret defaults), but in a demo
+# repo .env is where a reader puts an API URL or a key, so it is ignored here.
+.env
 .env.local
 .env.*.local
 
