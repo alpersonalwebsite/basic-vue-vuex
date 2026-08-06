@@ -23,3 +23,15 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets and local databases. Nothing here produces them today, but a demo is where
+# a reader wires in their own credentials or a scratch db, and .gitignore should be
+# ahead of that.
+secrets/
+credentials*
+*.pem
+*.key
+*.log
+*.sqlite
+*.sqlite3
+*.db
