@@ -12,7 +12,6 @@ import axios from "axios";
 // https://github.com/alpersonalwebsite/node-express-postgresql, the project the dead
 // Heroku app was running. See the README for starting it.
 const API = process.env.VUE_APP_API_URL || "http://localhost:3333/api/users";
-const limitQuery = "limit=";
 const limitUserResults = 10;
 
 // Deliberately does NOT catch. A query's job is to fetch or throw; deciding what a
@@ -20,7 +19,13 @@ const limitUserResults = 10;
 // store's state. Swallowing it here is how you end up with a store that cannot tell
 // "no users" from "the request failed".
 export const getUsersQuery = async () => {
-  const result = await axios.get(`${API}?${limitQuery}${limitUserResults}`);
+  // params, not `${API}?limit=...`. If VUE_APP_API_URL already carries a query string,
+  // template-literal concatenation produces a second '?' and the server sees one
+  // malformed parameter. axios builds the URL properly: measured against the pinned
+  // 0.19.2, a base of /api/users?tenant=demo becomes /api/users?tenant=demo&limit=10
+  // with params, and /api/users?tenant=demo?limit=10 by concatenation. It encodes
+  // values too, which concatenation does not.
+  const result = await axios.get(API, { params: { limit: limitUserResults } });
   return result;
 };
 
