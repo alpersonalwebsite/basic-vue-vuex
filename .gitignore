@@ -3,6 +3,10 @@ node_modules
 /dist
 
 # local env files
+# .env itself was NOT ignored, only the .local variants. Vue CLI's scaffold does that
+# on purpose (a committed .env is meant to hold non-secret defaults), but in a demo
+# repo .env is where a reader puts an API URL or a key, so it is ignored here.
+.env
 .env.local
 .env.*.local
 
@@ -19,3 +23,15 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Secrets and local databases. Nothing here produces them today, but a demo is where
+# a reader wires in their own credentials or a scratch db, and .gitignore should be
+# ahead of that.
+secrets/
+credentials*
+*.pem
+*.key
+*.log
+*.sqlite
+*.sqlite3
+*.db
