@@ -1,6 +1,5 @@
 # Basic Vue and Vuex Store
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/alpersonalwebsite/basic-vue-vuex.svg)](https://greenkeeper.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 An easy, basic and raw (no styles attached) example of **HOW to** implement a `Vuex`
